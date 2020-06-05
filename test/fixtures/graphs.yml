@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2020-06-03
+  weight: 1.5
+  user: one
+
+two:
+  date: 2020-06-03
+  weight: 1.5
+  user: two

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
  root 'graphs#index'
-end
+resource :graphs, only: %i[index create update]
+ end
 

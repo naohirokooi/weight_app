@@ -1,90 +1,46 @@
-<p class="mt-4">青いボタンが表示されていれば，「Bootstrap」の導入はOKです</p>
-<button type="button" class="btn btn-primary btn-block">ボタン</button>
-
-<p class="mt-4">ボタンを押したときにモーダルが表示されれば，「Bootstrap」の導入はOKです</p>
-<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#test-modal">モーダル</button>
-<!-- ボタンを押したとき，以下のモーダルが出現 -->
-<div class="modal fade" id="test-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">タイトル</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>本文はここに書きます</p>
-      </div>
-      <div class="modal-footer">
-        <p>フッターはここに書きます</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p class="my-4">フォームをクリックしたときに，青色の帯のカレンダーが出れば「flatpickr」の導入はOKです</p>
-<input id="date-form" type="text" placeholder="日付を設定" readonly>
-​
-<script>
-    // カレンダーの表示
-    flatpickr('#date-form')
-</script>
-
-<p class="my-4">フォームをクリックしたときに，青色の帯のカレンダーが出れば「flatpickr」の導入はOKです</p>
-<input class="form-control bg-white" id="date-form" type="text" placeholder="日付を設定" readonly>
-​
 <%= Gon::Base.render_data %>
+<div class="row">
+  <div class="col-6">
+    <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#new-modal">
+    新規登録
+    </button>
+  </div>
+  <div class="col-6">
+  <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#edit-modal">
+  記録の修正
+  </button>
+  </div>
+</div>    
+<div class="row">
+  <div class="col-6 col-sm-3">
+    <input type="button" value="過去1週間" id="a-week-button" class="btn btn-success btn-block mt-3">
+  </div>
+  <div class="col-6 col-sm-3">
+    <input type="button" value="過去2週間" id="two-weeks-button" class="btn btn-sccuess btn-block mt-3">
+  </div>
+  <div class="col-6 col-sm-3">
+    <input type="button" value="過去1ヶ月" id="a-month-button" class="btn btn-sccuess btn-block mt-3">
+  </div>
+  <div class="col-6 col-sm-3">
+    <input type="button" value="過去3ヶ月" id="three-months-button" class="btn btn-sccuess btn-block mt-3">
+  </div>
 
+<div class="row no-gutters">
+  <div class="input-group col-sm-6 pr-sm-3 mt-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">開始</span>
+    </div>
+    <input type="text" id="start-calendar" class="form-control bg-white text-center">
+    </div>
+    <div class="input-group col-sm-6 pl-sm-3 mt-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">終了</span>
+      </div>
+      <input type="text" id="end-calendar" class="form-control bg-white text-center">
+    </div>
+ </div>     
+<canvas id="chart-weight"></canvas>
 
-
-<p class="mt-4">棒グラフが表示されていれば，「Chart.js」の導入はOKです</p>
-<canvas id="bar-chart"></canvas>
-​
-<script>
-
-      // 棒グラフのデータ
-    let barLabel = ['1月', '2月', '3月', '4月', '5月', '6月']
-    let barData = [5, 4, 2, 6, 5, 8]
-
-    // 棒グラフのオプション
-
-    const barChartData = {
-        labels: barLabel,
-        datasets: [{
-            label: '得点',
-            data: barData,
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-        }]
-    }
-
-    const barChartOption = {
-        title: {
-            display: true,
-            text: '棒グラフ'
-        },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    // y軸のメモリを 0 からスタートに強制
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-
-    // 棒グラフを表示
-    const barChartContext = document.getElementById("bar-chart").getContext('2d')
-    new Chart(barChartContext, {
-        type: 'bar',
-        data: barChartData,
-        options: barChartOption
-    })
-</script>
-
-<p class="mt-4">折れ線グラフが表示されていれば，「Chart.js」の導入はOKです</p>
-<canvas id="line-chart"></canvas>
-
-​ 
+<% render 'modal' , action:'new', title: '新規登録' %>
+<%= render 'modal', action: 'new', title:' 新規登録' %>
+<%= render 'modal', action: 'edit', title: ' 修正'%>
